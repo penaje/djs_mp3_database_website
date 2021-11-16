@@ -1,104 +1,74 @@
 <!-- index.hbs -->
-<nav class="navbar navbar-light navbar-expand-md d-xxl-flex justify-content-xxl-center navigation-clean"
-        style="background: #222222;">
-        <div class="container"><a class="navbar-brand" href="index.html"
-                style="font-weight: bold;color: var(--bs-cyan);font-style: italic;">DJ's MP3's</a><button
-                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
-                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center"
-                id="navcol-1">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/Footer-Basic.css">
+<link rel="stylesheet" href="./css/Navigation-Clean.css">
+<link rel="stylesheet" href="./css/styles.css">
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: #222222;">
+        <div class="container"><a class="navbar-brand" href="/" style="font-weight: bold;color: var(--bs-cyan);font-style: italic;">DJ's MP3's</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html"
-                            style="color: var(--bs-purple);font-weight: bold;font-style: italic;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="customers_1.html"
-                            style="color: #465765;font-style: italic;font-weight: bold;">customers</a></li>
-                    <li class="nav-item d-xxl-flex justify-content-center justify-content-xxl-center"
-                        style="color: #465765;"><a class="nav-link" href="orders_1.html"
-                            style="color: #465765;font-style: italic;font-weight: bold;">orders</a></li>
-                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="albums_1.html"
-                            style="color: #465765;font-style: italic;font-weight: bold;">albums</a></li>
-                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="artists_1.html"
-                            style="color: #465765;font-style: italic;font-weight: bold;">artists</a></li>
-                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="tracks_1.html"
-                            style="color: #465765;font-style: italic;font-weight: bold;">tracks</a></li>
-                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="download_items_1.html"
-                            style="color: #465765;font-style: italic;font-weight: bold;">download_items</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/" style="color: var(--bs-purple);font-weight: bold;font-style: italic;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customers" style="color: #465765;font-weight: bold;font-style: italic;">customers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="orders.html" style="color: #465765;font-weight: bold;font-style: italic;">orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="albums.html" style="color: #465765;font-weight: bold;font-style: italic;">albums</a></li>
+                    <li class="nav-item"><a class="nav-link" href="artists.html" style="color: #465765;font-weight: bold;font-style: italic;">artists</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tracks.html" style="color: #465765;font-weight: bold;font-style: italic;">tracks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="download_items.html" style="color: #465765;font-weight: bold;font-style: italic;">download_items</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <h1 style="padding: 5px;margin: 10px;margin-right: 0px;margin-bottom: 0px;margin-top: 0px;">Customers</h1>
-    <div class="table-responsive" style="margin: 20px;padding: 10px;">
-        <table id='customer-table' class="table">
-            <thead>
-                <tr>
-                    {{#each data.[0]}}
-                    <th>
-                        {{@key}}
-                    </th>
-                    {{/each}}
-                </tr>
-            </thead>
-            <tbody>
-                {{#each data}}
-                <tr>
-                    <td>{{this.customer_id}}</td>
-                    <td>{{this.customer_first_name}}</td>
-                    <td>{{this.customer_last_name}}</td>
-                    <td>{{this.customer_phone}}</td> 
-                    <td>{{this.customer_street}}</td>  
-                    <td>{{this.customer_apt}}</td>     
-                    <td>{{this.customer_city}}</td>  
-                    <td>{{this.customer_state}}</td>  
-                    <td>{{this.customer_zip}}</td>
-                    <td>{{this.customer_email}}</td> 
-                    <td>{{this.credit_card_number}}</td>     
-                    <td>{{this.credit_card_exp}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <h1 class="m-auto">DJ's MP3's Admin Center</h1>
+    <div class="row m-auto" style="margin: 0px;">
+        <div class="col">
+            <div class="card-group">
+                <div class="card m-auto" style="margin: 0;">
+                    <div class="card-body m-auto">
+                        <h4 class="card-title">customers</h4>
+                        <p class="card-text">Table containing customer details</p><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="/customers">Manage Customers</a>
+                    </div>
+                </div>
+                <div class="card m-auto">
+                    <div class="card-body m-auto">
+                        <h4 class="card-title">orders</h4>
+                        <p class="card-text">Table containing details about orders</p><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="orders.html">Manage Orders</a>
+                    </div>
+                </div>
+                <div class="card m-auto">
+                    <div class="card-body m-auto">
+                        <h4 class="card-title">albums</h4>
+                        <p class="card-text">Table containing details about albums</p><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="albums.html">Manage albums</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Customer Information with AJAX!</h2>
-    <form id='add-customer-form-ajax' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
-        <label for='input-fname' class="form-label">First Name</label>
-        <input class="form-control" type="text" name='input-fname' id="input-fname" required="">
-
-        <label for='input-lname' class="form-label">Last Name</label>
-        <input class="form-control" type="text" name='input-lname' id="input-lname" required="">
-
-        <label for='input-pnumber'class="form-label">Customer Phone Number</label>
-        <input class="form-control" type="number" name='input-pnumber' id="input-pnumber" required="">
-
-        <label for='input-street'class="form-label">Street Address</label>
-        <input class="form-control" type="text" name='input-street'id="input-street" required="">
-
-        <label for='input-apt'class="form-label">Apt #</label>
-        <input class="form-control" type="text" name='input-apt'id="input-apt">
-
-        <label for='input-city' class="form-label">City</label>
-        <input class="form-control" type="text" name='input-city'id="input-city" required="">
-
-        <label for='input-state'class="form-label">State</label>
-        <input class="form-control" type="text" name='input-state' id="input-state" minlength="2" maxlength="2" required="">
- 
-        <label for='input-zip' class="form-label">Zip Code</label>
-        <input class="form-control" type="number" name='input-zip'id="input-zip" required="">
-
-        <label for='input-email'class="form-label">Email&nbsp;</label>
-        <input class="form-control" type="text" name='input-email'id="input-email" required="">
-
-        <label for='input-card'class="form-label">Credit Card Number</label>
-        <input class="form-control" type="number" name='input-card'id="input-card" required="">
-
-        <label for='input-cardexp'class="form-label">Credit Card Exp</label>
-        <input class="form-control" type="number" name='input-cardexp' id="input-cardexp" required="">
-
-        <input  text='Add New Customer(real)'type='submit'>
-
-        <button class="btn btn-primary d-xxl-flex justify-content-xxl-end" id="add_new_customer" type="button"
-            style="margin-top: 5px;padding: 5px 12px;">Add New Customer</button>
-    </form>
+    <div class="row m-auto">
+        <div class="col">
+            <div class="card-group m-auto">
+                <div class="card m-auto">
+                    <div class="card-body m-auto">
+                        <h4 class="card-title">artists</h4>
+                        <p class="card-text">Table containing details about artists</p><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="artists.html">Manage artists</a>
+                    </div>
+                </div>
+                <div class="card m-auto">
+                    <div></div>
+                    <div class="card-body m-auto">
+                        <h4 class="card-title">tracks</h4>
+                        <p class="card-text">Table containing details about tracks</p><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="tracks.html">Manage tracks</a>
+                    </div>
+                </div>
+                <div class="card m-auto">
+                    <div class="card-body m-auto">
+                        <h4 class="card-title">download_items</h4>
+                        <p class="card-text">Table containing details about download_items</p><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="download_items.html">Manage download_items</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="footer-basic">
         <p class="text-center copyright">DJ's MP3's © 2021</p>
     </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>

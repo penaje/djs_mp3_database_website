@@ -10,7 +10,7 @@ addCustomerForm.addEventListener("submit", function (e) {
     // Get form fields we need to get data from
     let inputFirstName = document.getElementById("input-fname");
     let inputLastName = document.getElementById("input-lname");
-    let inputPhone = document.getElementById("input-phone");
+    let inputPhone = document.getElementById("input-pnumber");
     let inputStreet = document.getElementById("input-street");
     let inputApt = document.getElementById("input-apt");
     let inputCity = document.getElementById("input-city");
@@ -47,6 +47,8 @@ addCustomerForm.addEventListener("submit", function (e) {
         credit_card_number: cardValue,
         credit_card_exp: cardExpValue
     }
+
+    console.log(data)
     
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
