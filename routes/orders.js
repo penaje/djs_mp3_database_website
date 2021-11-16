@@ -30,8 +30,8 @@ router.post('/add-orders-form', function(req, res){
     // Create the query and run it on the database
     query1 = `INSERT INTO orders (customer_id, order_date, credit_card_number, credit_card_exp,
              total_cost) 
-             VALUES ('${data['input-customerid']}', '${data['input-date']}','${data['input-card']}', '${data['input-cardexp']}',
-              '${data['input-cost']}')`;
+             VALUES ('${data['input-customerid']}', '${data['input-date']}',(SELECT credit_card_number FROM customers WHERE customer_id='${data['input-customerid']}'),
+             (SELECT credit_card_exp FROM customers WHERE customer_id='${data['input-customerid']}'), '${data['input-cost']}')`;
               console.log(data)
 
     db.pool.query(query1, function(error, rows, fields){
