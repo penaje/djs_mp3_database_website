@@ -1,0 +1,82 @@
+<!-- albums.handlebars -->
+
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/Footer-Basic.css">
+<link rel="stylesheet" href="./css/Navigation-Clean.css">
+<link rel="stylesheet" href="./css/styles.css">
+
+<nav class="navbar navbar-light navbar-expand-md d-xxl-flex justify-content-xxl-center navigation-clean"
+        style="background: #222222;">
+        <div class="container"><a class="navbar-brand" href="/"
+                style="font-weight: bold;color: var(--bs-cyan);font-style: italic;">DJ's MP3's</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-center text-sm-center text-md-center text-lg-center text-xl-center text-xxl-center d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center"
+                id="navcol-1">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/"
+                            style="color: var(--bs-purple);font-weight: bold;font-style: italic;">Home</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="/customers"
+                            style="color: #465765;font-style: italic;font-weight: bold;">customers</a></li>
+
+                    <li class="nav-item d-xxl-flex justify-content-center justify-content-xxl-center"
+                        style="color: #465765;"><a class="nav-link" href="/orders"
+                            style="color: #465765;font-style: italic;font-weight: bold;">orders</a></li>
+
+                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="/albums"
+                            style="color: #465765;font-style: italic;font-weight: bold;">albums</a></li>
+
+                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="/artists"
+                            style="color: #465765;font-style: italic;font-weight: bold;">artists</a></li>
+
+                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="/tracks"
+                            style="color: #465765;font-style: italic;font-weight: bold;">tracks</a></li>
+
+                    <li class="nav-item" style="color: #465765;"><a class="nav-link" href="/download_items"
+                            style="color: #465765;font-style: italic;font-weight: bold;">download_items</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1 style="padding: 5px;margin: 10px;margin-right: 0px;margin-bottom: 0px;margin-top: 0px;">Albums</h1>
+    <div class="table-responsive" style="margin: 20px;padding: 10px;">
+        <table id='albums-table' class="table">
+            <thead>
+                <tr>
+                    {{#each data.[0]}}
+                    <th>
+                        {{@key}}
+                    </th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <td>{{this.album_id}}</td>
+                    <td>{{this.album_title}}</td>
+                    <td>{{this.genre}}</td>
+                    <td>{{this.release_date}}</td>     
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Order Information</h2>
+    <form id='add-albums-form' method="post" action='albums/add-albums-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
+        <label for='input-albumtitle' class="form-label">Album Title</label>
+        <input class="form-control" type="text" name='input-albumtitle' id="input-albumtitle" required="">
+
+        <label for='input-genre' class="form-label">Genre</label>
+        <input class="form-control" type="text" name='input-genre' id="input-genre">
+
+        <label for='input-releasedate'class="form-label">Release Date</label>
+        <input class="form-control" type="date" name='input-releasedate' id="input-releasedate">
+
+        <input  text='Add New Album'type='submit'>
+
+    </form>
+    <footer class="footer-basic">
+        <p class="text-center copyright">DJ's MP3's © 2021</p>
+    </footer>

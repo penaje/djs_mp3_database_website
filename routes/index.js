@@ -8,5 +8,9 @@ router.use('/', require('./homepage.js'));
 
 router.use('/customers', require('./customers.js'));
 
+router.use('/orders', require('./orders.js'));
+
+router.use('/albums', require('./albums.js'));
+
 module.exports = router;
 
