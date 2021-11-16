@@ -33,7 +33,7 @@ router.post('/add-albums-form', function(req, res){
     
     // Create the query and run it on the database
     query1 = `INSERT INTO albums (album_title, genre, release_date) 
-             VALUES ('${data['input-albumtitle']}', ${genre}, ${release_date})`;
+             VALUES ("${data["input-albumtitle"]}", ${genre}, ${release_date})`;
               console.log(data)
     db.pool.query(query1, function(error, rows, fields){
     
