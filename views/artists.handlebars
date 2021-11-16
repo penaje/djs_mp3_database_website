@@ -1,4 +1,4 @@
-<!-- orders.handlebars -->
+<!-- artists.handlebars -->
 
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/Footer-Basic.css">
@@ -39,9 +39,9 @@
             </div>
         </div>
     </nav>
-    <h1 style="padding: 5px;margin: 10px;margin-right: 0px;margin-bottom: 0px;margin-top: 0px;">Orders</h1>
+    <h1 style="padding: 5px;margin: 10px;margin-right: 0px;margin-bottom: 0px;margin-top: 0px;">Artists</h1>
     <div class="table-responsive" style="margin: 20px;padding: 10px;">
-        <table id='orders-table' class="table">
+        <table id='artists-table' class="table">
             <thead>
                 <tr>
                     {{#each data.[0]}}
@@ -54,41 +54,19 @@
             <tbody>
                 {{#each data}}
                 <tr>
-                    <td>{{this.order_number}}</td>
-                    <td>{{this.customer_id}}</td>
-                    <td>{{this.order_date}}</td>
-                    <td>{{this.credit_card_number}}</td> 
-                    <td>{{this.credit_card_exp}}</td>  
-                    <td>{{this.total_cost}}</td>     
+                    <td>{{this.artist_id}}</td>
+                    <td>{{this.artist_name}}</td>     
                 </tr>
                 {{/each}}
             </tbody>
         </table>
     </div>
-    <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Order Information</h2>
-    <form id='add-orders-form' method="post" action='orders/add-orders-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
-        <label for='input-customerid' class="form-label">Customer ID</label>
-        <select name='input-customerid' id="input-customerid">
-            <option value=''>Select a Customer</option>
-            {{#each first_names}}
-            <option value="{{this.customer_id}}">{{this.customer_first_name}}</option>
-            {{/each}}
-        </select>
-        <br>
+    <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Artist Information</h2>
+    <form id='add-artists-form' method="post" action='artists/add-artists-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
+        <label for='input-artist-name' class="form-label">Artist Name</label>
+        <input class="form-control" type="text" name='input-artist-name' id="input-artist-name" required="">
 
-        <label for='input-date' class="form-label">Order Date</label>
-        <input class="form-control" type="date" name='input-date' id="input-date" required="">
-
-        <label for='input-card'class="form-label">Credit Card Number</label>
-        <input class="form-control" type="number" name='input-card' id="input-card" required="">
-
-        <label for='input-cardexp'class="form-label">Credit Card Expiration</label>
-        <input class="form-control" type="number" name='input-cardexp'id="input-cardexp" required="">
-
-        <label for='input-cost'class="form-label">Total Cost</label>
-        <input class="form-control" type="number" step='0.01' name='input-cost'id="input-cost">
-
-        <input  text='Add New Order'type='submit'>
+        <input  text='Add New Artist'type='submit'>
 
     </form>
     <footer class="footer-basic">

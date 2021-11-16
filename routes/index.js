@@ -12,5 +12,11 @@ router.use('/orders', require('./orders.js'));
 
 router.use('/albums', require('./albums.js'));
 
+router.use('/artists', require('./artists.js'));
+
+router.use('/tracks', require('./tracks.js'));
+
+router.use('/download_items', require('./download_items.js'));
+
 module.exports = router;
 

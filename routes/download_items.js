@@ -1,4 +1,4 @@
-//ALBUMS .js file
+//DOWNLOAD ITEMS .js file
 
 var express = require('express');
 var router = express.Router();
@@ -6,34 +6,29 @@ var db = require('../database/db-connector');
 
 router.get('/', function(req, res)
     {
-        let query1 = 'SELECT album_id, album_title, genre, DATE_FORMAT(release_date, "%m/%d/%Y") FROM albums';
+        let query1 = 'SELECT * FROM download_items';
+
+        let query2 = 'SELECT * FROM tracks';
 
         db.pool.query(query1, function(error, rows, fields){
-            
-            res.render('albums', {data: rows});
+
+            let download_items_info = rows;
+
+            db.pool.query(query2, (error, rows, fields) => {
+
+                let tracks_info = rows;            
+                return res.render('download_items', {data: download_items_info, tracks_info: tracks_info});
         })
     });
+});
 
-router.post('/add-albums-form', function(req, res){
+router.post('/add-download-items-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
-
-    // Capture NULL values
-    let genre = parseInt(data['input-genre']);
-    if (isNaN(genre))
-    {
-        genre = 'NULL'
-    }
-
-    let release_date = parseInt(data['input-releasedate']);
-    if (isNaN(release_date))
-    {
-        release_date = 'NULL'
-    }
     
     // Create the query and run it on the database
-    query1 = `INSERT INTO albums (album_title, genre, release_date) 
-             VALUES ("${data["input-albumtitle"]}", ${genre}, ${release_date})`;
+    query1 = `INSERT INTO download_items (order_number, track_id, single) 
+             VALUES ("${data["input-order-number"]}", "${data["input-track-id"]}", "${data["input-single"]}")`;
               console.log(data)
     db.pool.query(query1, function(error, rows, fields){
     
@@ -49,7 +44,7 @@ router.post('/add-albums-form', function(req, res){
         // presents it on the screen
         else
         {
-            res.redirect('/albums');
+            res.redirect('/download_items');
         }
     })
 })

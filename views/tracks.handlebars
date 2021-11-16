@@ -1,4 +1,4 @@
-<!-- orders.handlebars -->
+<!-- tracks.handlebars -->
 
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/Footer-Basic.css">
@@ -39,9 +39,9 @@
             </div>
         </div>
     </nav>
-    <h1 style="padding: 5px;margin: 10px;margin-right: 0px;margin-bottom: 0px;margin-top: 0px;">Orders</h1>
+    <h1 style="padding: 5px;margin: 10px;margin-right: 0px;margin-bottom: 0px;margin-top: 0px;">Tracks</h1>
     <div class="table-responsive" style="margin: 20px;padding: 10px;">
-        <table id='orders-table' class="table">
+        <table id='tracks-table' class="table">
             <thead>
                 <tr>
                     {{#each data.[0]}}
@@ -54,41 +54,48 @@
             <tbody>
                 {{#each data}}
                 <tr>
-                    <td>{{this.order_number}}</td>
-                    <td>{{this.customer_id}}</td>
-                    <td>{{this.order_date}}</td>
-                    <td>{{this.credit_card_number}}</td> 
-                    <td>{{this.credit_card_exp}}</td>  
-                    <td>{{this.total_cost}}</td>     
+                    <td>{{this.track_id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.artist_id}}</td>
+                    <td>{{this.album_id}}</td> 
+                    <td>{{this.ind_price}}</td>  
+                    <td>{{this.album_price}}</td>     
                 </tr>
                 {{/each}}
             </tbody>
         </table>
     </div>
-    <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Order Information</h2>
-    <form id='add-orders-form' method="post" action='orders/add-orders-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
-        <label for='input-customerid' class="form-label">Customer ID</label>
-        <select name='input-customerid' id="input-customerid">
-            <option value=''>Select a Customer</option>
-            {{#each first_names}}
-            <option value="{{this.customer_id}}">{{this.customer_first_name}}</option>
+    <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Track Information</h2>
+    <form id='add-tracks-form' method="post" action='tracks/add-tracks-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
+        <label for='input-title' class="form-label">Track Title</label>
+        <input class="form-control" type="text" name='input-title' id="input-title" required="">
+
+        <label for='input-artist-id' class="form-label">Customer ID</label>
+        <select name='input-artist-id' id="input-artist-id">
+            <option value=''>Select an Artist</option>
+            {{#each artist_info}}
+            <option value="{{this.artist_id}}">{{this.artist_name}}</option>
             {{/each}}
         </select>
         <br>
 
-        <label for='input-date' class="form-label">Order Date</label>
-        <input class="form-control" type="date" name='input-date' id="input-date" required="">
+        <label for='input-album-id' class="form-label">Album ID</label>
+        <select name='input-album-id' id="input-album-id">
+            <option value=''>Select an Album</option>
+            {{#each album_info}}
+            <option value="{{this.album_id}}">{{this.album_title}}</option>
+            {{/each}}
+        </select>
+        <br>
 
-        <label for='input-card'class="form-label">Credit Card Number</label>
-        <input class="form-control" type="number" name='input-card' id="input-card" required="">
+        <label for='input-ind-price'class="form-label">Indvidual Price</label>
+        <input class="form-control" type="number" step='0.01' name='input-ind-price'id="input-ind-price" required="">
 
-        <label for='input-cardexp'class="form-label">Credit Card Expiration</label>
-        <input class="form-control" type="number" name='input-cardexp'id="input-cardexp" required="">
+        <label for='input-album-price'class="form-label">Album Price</label>
+        <input class="form-control" type="number" step='0.01' name='input-album-price'id="input-album-price" required=''>
 
-        <label for='input-cost'class="form-label">Total Cost</label>
-        <input class="form-control" type="number" step='0.01' name='input-cost'id="input-cost">
 
-        <input  text='Add New Order'type='submit'>
+        <input  text='Add New Track'type='submit'>
 
     </form>
     <footer class="footer-basic">
