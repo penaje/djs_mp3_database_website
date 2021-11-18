@@ -19,10 +19,30 @@ router.get('/', function(req, res)
 router.post('/add-albums-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
+
+    // Capture NULL values
+    let genre = (data['input-genre']); 
+
+    if (genre === undefined){
+        genre = 'NULL'
+    }
+    if (genre === '') {
+        genre = "NULL"
+    }
+
+    let release_date = (data['input-release-date']);
+    if (release_date === undefined) {
+        release_date = 'NULL'
+    }
+    if (release_date === '') {
+        release_date = "NULL"
+    }
+
+
     
     // Create the query and run it on the database
     query1 = `INSERT INTO albums (album_title, genre, release_date) 
-             VALUES ("${data["input-albumtitle"]}", "${data["input-genre"]}", "${data["input-releasedate"]}")`;
+             VALUES ("${data["input-album-title"]}", "${genre}", "${release_date}")`;
 
               console.log(data)
               console.log(query1)

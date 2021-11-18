@@ -23,8 +23,7 @@ router.post('/add-customer-form', function(req, res){
     
         // Capture NULL values
     let customer_apt = parseInt(data['input-apt']);
-    if (isNaN(customer_apt))
-    {
+    if (isNaN(customer_apt)){
         customer_apt = 'NULL'
     }
     

@@ -17,6 +17,21 @@ router.get('/', function(req, res)
             db.pool.query(query2, (error, rows, fields) => {
 
                 let tracks_info = rows;
+
+                //create the track map
+                tracks_map = {}
+
+                //map the track_id to track_title
+                tracks_info.map(track => {
+                    let track_id = parseInt(track.track_id, 10)
+
+                    tracks_map[track_id] = track['title'];
+                })
+
+                //replace the track_id in download_info with the title from track_map
+                download_items_info = download_items_info.map(download_item => {
+                    return Object.assign(download_item, {track_id: tracks_map[download_item.track_id]})
+                })
                 
                 let headers_list = ['Order Number', 'Track ID', 'Single']
 

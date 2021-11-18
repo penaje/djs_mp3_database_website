@@ -66,13 +66,22 @@ router.get('/', function(req, res)
 router.post('/add-tracks-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
+
+    // Capture NULL values
+    let album_id = data['input-album-id'];
+    console.log('data test')
+    console.log(data['input-album-id'])
+
+    if (album_id === undefined){
+        album_id = 'NULL'
+    }
+    if (album_id === ''){
+        album_id = 'NULL'
+    }
+
     
     // Create the query and run it on the database
-    query1 = `INSERT INTO tracks (title, artist_id, album_id, ind_price, album_price) 
-             VALUES
-              ('${data['input-title']}', '${data['input-artist-id']}','${data['input-album-id']}',
-              '${data['input-ind-price']}', '${data['input-album-price']}')`;
-              console.log(data)
+    query1 = `INSERT INTO tracks (title, artist_id, album_id, ind_price, album_price) VALUES ('${data['input-title']}', '${data['input-artist-id']}',${album_id},'${data['input-ind-price']}', '${data['input-album-price']}')`;
     db.pool.query(query1, function(error, rows, fields){
     
         // Check to see if there was an error
