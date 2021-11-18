@@ -16,8 +16,11 @@ router.get('/', function(req, res)
 
             db.pool.query(query2, (error, rows, fields) => {
 
-                let tracks_info = rows;            
-                return res.render('download_items', {data: download_items_info, tracks_info: tracks_info});
+                let tracks_info = rows;
+                
+                let headers_list = ['Order Number', 'Track ID', 'Single']
+
+                return res.render('download_items', {headers:headers_list, data: download_items_info, tracks_info: tracks_info});
         })
     });
 });

@@ -6,35 +6,26 @@ var db = require('../database/db-connector');
 
 router.get('/', function(req, res)
     {
-        let query1 = 'SELECT album_id, album_title, genre, DATE_FORMAT(release_date, "%m/%d/%Y") FROM albums';
+        let query1 = 'SELECT album_id, album_title, genre, DATE_FORMAT(release_date, "%m/%d/%Y") release_date FROM albums';
 
         db.pool.query(query1, function(error, rows, fields){
+
+            let headers_list = ['Album Id', 'Album Title', 'Genre', 'Release Date']
             
-            res.render('albums', {data: rows});
+            res.render('albums', {headers: headers_list, data: rows});
         })
     });
 
 router.post('/add-albums-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
-
-    // Capture NULL values
-    let genre = parseInt(data['input-genre']);
-    if (isNaN(genre))
-    {
-        genre = 'NULL'
-    }
-
-    let release_date = parseInt(data['input-releasedate']);
-    if (isNaN(release_date))
-    {
-        release_date = 'NULL'
-    }
     
     // Create the query and run it on the database
     query1 = `INSERT INTO albums (album_title, genre, release_date) 
-             VALUES ("${data["input-albumtitle"]}", ${genre}, ${release_date})`;
+             VALUES ("${data["input-albumtitle"]}", "${data["input-genre"]}", "${data["input-releasedate"]}")`;
+
               console.log(data)
+              console.log(query1)
     db.pool.query(query1, function(error, rows, fields){
     
         // Check to see if there was an error

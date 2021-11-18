@@ -9,8 +9,10 @@ router.get('/', function(req, res)
         let query1 = 'SELECT * FROM artists';
 
         db.pool.query(query1, function(error, rows, fields){
+
+            let headers_list = ['Artist Id', 'Artist Name']
             
-            res.render('artists', {data: rows});
+            res.render('artists', {headers: headers_list, data: rows});
         })
     });
 

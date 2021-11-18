@@ -23,7 +23,41 @@ router.get('/', function(req, res)
                 db.pool.query(query3, (error, rows, fields) => {
 
                     let album_info=rows;
-                    return res.render('tracks', {data: track_info, artist_info: artist_info, album_info: album_info});
+                    
+                    //create the maps
+                    album_map = {}
+                    artist_map = {}
+
+                    //map the album_id to album_title
+                    album_info.map(album => {
+                        let album_id = parseInt(album.album_id, 10)
+    
+                        album_map[album_id] = album['album_title'];
+                    })
+
+
+                    //map the artist_id to artist_name
+                    artist_info.map(artist => {
+                        let artist_id = parseInt(artist.artist_id, 10)
+    
+                        artist_map[artist_id] = artist['artist_name'];
+                    })
+    
+    
+                    //replace the album_id in tracks with the album_title from album_map
+                    track_info = track_info.map(track => {
+                        return Object.assign(track, {album_id: album_map[track.album_id]})
+                    })
+
+                    //replace the artist_id in tracks with the artist_name from artist_map
+                    track_info = track_info.map(track => {
+                        return Object.assign(track, {artist_id: artist_map[track.artist_id]})
+                    })
+    
+
+                    let headers_list = ['Track Id', 'Title', 'Artist Name', 'Album Title', 'Individual Price', 'Album Price']
+
+                    return res.render('tracks', {headers:headers_list, data: track_info, artist_info: artist_info, album_info: album_info});
         })
     });
 })

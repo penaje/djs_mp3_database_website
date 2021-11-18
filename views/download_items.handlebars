@@ -44,9 +44,9 @@
         <table id='download-items-table' class="table">
             <thead>
                 <tr>
-                    {{#each data.[0]}}
+                    {{#each headers}}
                     <th>
-                        {{@key}}
+                        {{this}}
                     </th>
                     {{/each}}
                 </tr>

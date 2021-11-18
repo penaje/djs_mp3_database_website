@@ -44,9 +44,9 @@
         <table id='orders-table' class="table">
             <thead>
                 <tr>
-                    {{#each data.[0]}}
+                    {{#each headers}}
                     <th>
-                        {{@key}}
+                        {{this}}
                     </th>
                     {{/each}}
                 </tr>
@@ -65,13 +65,14 @@
             </tbody>
         </table>
     </div>
+
     <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add New Order Information</h2>
     <form id='add-orders-form' method="post" action='orders/add-orders-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
         <label for='input-customerid' class="form-label">Customer ID</label>
         <select name='input-customerid' id="input-customerid">
             <option value=''>Select a Customer</option>
-            {{#each first_names}}
-            <option value="{{this.customer_id}}">{{this.customer_first_name}}</option>
+            {{#each customer_name}}
+            <option value="{{this.customer_id}}">{{this.customer_first_name}} {{this.customer_last_name}}</option>
             {{/each}}
         </select>
         <br>
@@ -79,12 +80,21 @@
         <label for='input-date' class="form-label">Order Date</label>
         <input class="form-control" type="date" name='input-date' id="input-date" required="">
 
-        <label for='input-cost'class="form-label">Total Cost</label>
-        <input class="form-control" type="number" step='0.01' name='input-cost'id="input-cost">
-
-        <input  text='Add New Order'type='submit'>
-
+        <input  text='Add New Order' name='Add New Order'type='submit'>
     </form>
+
+    <h2>Search Orders by Last Name</h2>
+    <form id="search-orders-form" method='GET' action='/orders'>
+    <label for="input-customer-first-name">Search by Last Name: </label>
+    <input type="text" name="order_name" id="order_name">
+    <input type="submit">
+    </form>
+
+    <form>
+        <label for='reset-button'>Display all Orders:</label>
+        <a href='/orders' id='reset-button' name='reset-button'><button>Reset</button></a>
+    </form>
+
     <footer class="footer-basic">
         <p class="text-center copyright">DJ's MP3's © 2021</p>
     </footer>

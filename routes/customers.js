@@ -9,8 +9,11 @@ router.get('/', function(req, res)
         let query1 = 'SELECT * FROM customers';
 
         db.pool.query(query1, function(error, rows, fields){
+
+            let headers_list = ['Customer Id', 'First Name', 'Last Name', 'Phone Number', 'Street Address',
+             'Apt', 'City', 'State', 'Zip Code', 'Email', 'Credit Card Number', 'Card Exp']
             
-            res.render('customers', {data: rows});
+            res.render('customers', {headers:headers_list, data: rows});
         })
     });
 
