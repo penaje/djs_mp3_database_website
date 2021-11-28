@@ -6,7 +6,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-PORT = 6915;
+PORT = 9215;
 
 // Database
 var db = require('./database/db-connector');
@@ -25,6 +25,8 @@ app.use('/', routes);
 
 app.use(require('./routes/index.js'));
 
+
+
 app.listen(PORT, function(){
-    console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
+    console.log('Express started on http://flip2.engr.oregonstate.edu:' + PORT + '; press Ctrl-C to terminate.')
 });

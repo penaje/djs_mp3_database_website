@@ -41,44 +41,49 @@
     </nav>
     
     <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Update Customer Information</h2>
-    <form id='update-customer-form' method="post" action='customers/update-customer-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
+    <form id='update-customer-form' method="post" action='/update_customers' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
         <label for='input-fname' class="form-label">First Name</label>
-        <input class="form-control" type="text" name='input-fname' id="input-fname" required="">
+        <input class="form-control" type="text" name='input-fname' id="input-fname" required="" value ="{{customer.customer_first_name}}">
 
         <label for='input-lname' class="form-label">Last Name</label>
-        <input class="form-control" type="text" name='input-lname' id="input-lname" required="">
+        <input class="form-control" type="text" name='input-lname' id="input-lname" required="" value="{{customer.customer_last_name}}">
 
         <label for='input-phone-number'class="form-label">Customer Phone Number</label>
-        <input class="form-control" type="number" name='input-phone-number' id="input-phone-number" required="">
+        <input class="form-control" type="number" name='input-phone-number' id="input-phone-number" required="" value="{{customer.customer_phone}}">
 
         <label for='input-street'class="form-label">Street Address</label>
-        <input class="form-control" type="text" name='input-street'id="input-street" required="">
+        <input class="form-control" type="text" name='input-street'id="input-street" required="" value="{{customer.customer_street}}">
 
         <label for='input-apt'class="form-label">Apt #</label>
-        <input class="form-control" type="text" name='input-apt'id="input-apt">
+        <input class="form-control" type="text" name='input-apt'id="input-apt" value="{{customer.customer_apt}}">
 
         <label for='input-city' class="form-label">City</label>
-        <input class="form-control" type="text" name='input-city'id="input-city" required="">
+        <input class="form-control" type="text" name='input-city'id="input-city" required="" value="{{customer.customer_city}}">
 
         <label for='input-state'class="form-label">State</label>
-        <input class="form-control" type="text" name='input-state' id="input-state" minlength="2" maxlength="2" required="">
+        <input class="form-control" type="text" name='input-state' id="input-state" minlength="2" maxlength="2" required="" value="{{customer.customer_state}}">
  
         <label for='input-zip' class="form-label">Zip Code</label>
-        <input class="form-control" type="number" name='input-zip'id="input-zip" required="">
+        <input class="form-control" type="number" name='input-zip'id="input-zip" required="" value="{{customer.customer_zip}}">
 
         <label for='input-email'class="form-label">Email&nbsp;</label>
-        <input class="form-control" type="text" name='input-email'id="input-email" required="">
+        <input class="form-control" type="text" name='input-email'id="input-email" required="" value="{{customer.customer_email}}">
 
         <label for='input-card'class="form-label">Credit Card Number</label>
-        <input class="form-control" type="number" name='input-card'id="input-card" required="">
+        <input class="form-control" type="number" name='input-card'id="input-card" required="" value="{{customer.credit_card_number}}">
 
         <label for='input-card-exp'class="form-label">Credit Card Exp</label>
-        <input class="form-control" type="number" name='input-cardexp' id="input-card-exp" required="">
+        <input class="form-control" type="number" name='input-cardexp' id="input-card-exp" required="" value="{{customer.credit_card_exp}}">
 
-        <input  text='Add New Customer'type='submit'>
+        {{!-- <input  text='Add New Customer'type='submit'> --}}
+
+       
 
     </form>
+        <button onclick="updateCustomer({{customer.customer_id}})">Update</button>
     <footer class="footer-basic">
         <p class="text-center copyright">DJ's MP3's © 2021</p>
     </footer>
  
+{{!-- <script src="/routes/update_customers.js"></script>
+<script src="/public/updatecustomer.js"></script> --}}

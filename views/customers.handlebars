@@ -66,6 +66,9 @@
                     <td>{{this.customer_email}}</td> 
                     <td>{{this.credit_card_number}}</td>     
                     <td>{{this.credit_card_exp}}</td>
+
+                    {{!-- <td><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="/update_customers">Update</a></td> --}}
+                    <td><a class="btn btn-primary" role="button" style="background: var(--bs-indigo);" href="/update_customers/{{this.customer_id}}">Update</a></td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -113,4 +116,6 @@
         <p class="text-center copyright">DJ's MP3's © 2021</p>
     </footer>
     {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
-<script src="./js/add_customer.js"></script>
+{{!-- <script src="./public/js/add_customer.js"></script> --}}
+
+<script src="/customers"></script>
