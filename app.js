@@ -6,7 +6,8 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-PORT = 9215;
+// PORT = 9215; port I used
+PORT = 6915;
 
 // Database
 var db = require('./database/db-connector');
