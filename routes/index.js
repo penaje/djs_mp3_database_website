@@ -18,5 +18,8 @@ router.use('/tracks', require('./tracks.js'));
 
 router.use('/download_items', require('./download_items.js'));
 
+// route for update customers page
+router.use('/update_customers', require('./update_customers.js'));
+
 module.exports = router;
 

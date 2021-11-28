@@ -55,8 +55,11 @@
                 {{#each data}}
                 <tr>
                     <td>{{this.order_number}}</td>
+                    <td>{{this.track_num}}</td>
                     <td>{{this.track_id}}</td>
-                    <td>{{this.single}}</td>    
+                    <td>{{this.single}}</td> 
+
+                    <td><button onclick="deleteDownloadItem({{this.order_number}},{{this.track_num}})">Delete</button></td>   
                 </tr>
                 {{/each}}
             </tbody>

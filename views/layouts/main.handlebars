@@ -5,6 +5,11 @@
 <head>
     <meta charset="utf-8">
     <title>DJ's MP3's</title>
+    {{!-- inclusion of jQuery CDN + running of jsscripts under public --}}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    {{#each jsscripts}}
+    <script src="/{{this}}"></script>
+    {{/each}}
 </head>
 <body>
 
