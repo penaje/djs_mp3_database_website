@@ -44,7 +44,7 @@
         <input class="form-control" type="text" name='input-lname' id="input-lname" required="" value="{{customer.customer_last_name}}">
 
         <label for='input-phone-number'class="form-label">Customer Phone Number</label>
-        <input class="form-control" type="number" name='input-phone-number' id="input-phone-number" required="" value="{{customer.customer_phone}}">
+        <input class="form-control" type="text" name='input-phone-number' id="input-phone-number" minlength="10" maxlength="11" required="" value="{{customer.customer_phone}}">
 
         <label for='input-street'class="form-label">Street Address</label>
         <input class="form-control" type="text" name='input-street'id="input-street" required="" value="{{customer.customer_street}}">
@@ -59,26 +59,21 @@
         <input class="form-control" type="text" name='input-state' id="input-state" minlength="2" maxlength="2" required="" value="{{customer.customer_state}}">
  
         <label for='input-zip' class="form-label">Zip Code</label>
-        <input class="form-control" type="number" name='input-zip'id="input-zip" required="" value="{{customer.customer_zip}}">
+        <input class="form-control" type="text" name='input-zip'id="input-zip" minlength="5" maxlength="5" required="" value="{{customer.customer_zip}}">
 
         <label for='input-email'class="form-label">Email&nbsp;</label>
         <input class="form-control" type="text" name='input-email'id="input-email" required="" value="{{customer.customer_email}}">
 
         <label for='input-card'class="form-label">Credit Card Number</label>
-        <input class="form-control" type="number" name='input-card'id="input-card" required="" value="{{customer.credit_card_number}}">
+        <input class="form-control" type="text" name='input-card'id="input-card" minlength="16" maxlength="16" required="" value="{{customer.credit_card_number}}">
 
         <label for='input-card-exp'class="form-label">Credit Card Exp</label>
-        <input class="form-control" type="number" name='input-cardexp' id="input-card-exp" required="" value="{{customer.credit_card_exp}}">
+        <input class="form-control" type="text" name='input-cardexp' id="input-card-exp" minlength="4" maxlength="4" required="" value="{{customer.credit_card_exp}}">
 
-        {{!-- <input  text='Add New Customer'type='submit'> --}}
-
-       
+         <button class="btn btn-primary" style="background: var(--bs-indigo);" onclick="updateCustomer({{customer.customer_id}})">Update</button>
 
     </form>
-        <button class="btn btn-primary" style="background: var(--bs-indigo);" onclick="updateCustomer({{customer.customer_id}})">Update</button>
     <footer class="footer-basic">
         <p class="text-center copyright">DJ's MP3's © 2021</p>
     </footer>
  
-{{!-- <script src="/routes/update_customers.js"></script>
-<script src="/public/updatecustomer.js"></script> --}}

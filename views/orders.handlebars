@@ -75,19 +75,19 @@
         <label for='input-date' class="form-label">Order Date</label>
         <input class="form-control" type="date" name='input-date' id="input-date" required="">
 
-        <input  text='Add New Order' name='Add New Order'type='submit'>
+        <input class="btn btn-primary" style="background: var(--bs-indigo);"  text='Add New Order' name='Add New Order'type='submit'>
     </form>
 
     <h2>Search Orders by Last Name</h2>
     <form id="search-orders-form" method='GET' action='/orders'>
     <label for="input-customer-first-name">Search by Last Name: </label>
     <input type="text" name="order_name" id="order_name">
-    <input type="submit">
+    <input class="btn btn-primary" style="background: var(--bs-indigo);" type="submit">
     </form>
 
     <form>
         <label for='reset-button'>Display all Orders:</label>
-        <a href='/orders' id='reset-button' name='reset-button'><button>Reset</button></a>
+        <a href='/orders' id='reset-button' name='reset-button'><button class="btn btn-primary" style="background: var(--bs-indigo);">Reset</button></a>
     </form>
 
     <footer class="footer-basic">
