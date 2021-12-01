@@ -48,21 +48,17 @@ router.put('/:id', function(req, res){
         customer_apt = 'NULL'
     }
 
-    let myssql = req.app.get('mysql');
+    
+    //new query
     let query = `UPDATE customers SET 
-    customer_first_name=?, customer_last_name=?, customer_phone=?, 
-    customer_street=?, customer_apt=?, customer_city=?, 
-    customer_state=?, customer_zip=?, customer_email=?, 
-    credit_card_number=?, credit_card_exp=? WHERE customer_id=?`
+    customer_first_name='${data['input-fname']}', customer_last_name='${data['input-lname']}', customer_phone='${data['input-phone-number']}', 
+    customer_street='${data['input-street']}', customer_apt=${customer_apt}, customer_city='${data['input-city']}', 
+    customer_state='${data['input-state']}', customer_zip='${data['input-zip']}', customer_email='${data['input-email']}', 
+    credit_card_number='${data['input-card']}', credit_card_exp='${data['input-cardexp']}' WHERE customer_id='${req.params.id}'`
 
-    // data pulled from form to insert into query
-    let inserts = [data['input-fname'], data['input-lname'],
-    data['input-phone-number'], data['input-street'],
-    customer_apt, data['input-city'], data['input-state'],
-    data['input-zip'], data['input-email'], data['input-card'],
-    data['input-cardexp'], req.params.id]
 
-    db.pool.query(query, inserts, function(error, results, fields){
+    // test with new query
+    db.pool.query(query, function(error, results, fields){
         if (error){
             console.log(error)
             res.write(JSON.stringify(error));

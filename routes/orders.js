@@ -94,8 +94,7 @@ router.post('/add-orders-form', function(req, res){
             res.sendStatus(400);
         }
     
-        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
-        // presents it on the screen
+        // If there was no error, we redirect back to our root route
         else
         {
             res.redirect('/orders');

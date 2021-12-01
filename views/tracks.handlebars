@@ -1,10 +1,5 @@
 <!-- tracks.handlebars -->
 
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/Footer-Basic.css">
-<link rel="stylesheet" href="./css/Navigation-Clean.css">
-<link rel="stylesheet" href="./css/styles.css">
-
 <nav class="navbar navbar-light navbar-expand-md d-xxl-flex justify-content-xxl-center navigation-clean"
         style="background: #222222;">
         <div class="container"><a class="navbar-brand" href="/"
@@ -70,7 +65,7 @@
         <label for='input-title' class="form-label">Track Title</label>
         <input class="form-control" type="text" name='input-title' id="input-title" required="">
 
-        <label for='input-artist-id' class="form-label">Artist ID</label>
+        <label for='input-artist-id' class="form-label">Artist Name</label>
         <select name='input-artist-id' id="input-artist-id">
             <option value=''>Select an Artist</option>
             {{#each artist_info}}
@@ -79,7 +74,7 @@
         </select>
         <br>
 
-        <label for='input-album-id' class="form-label">Album ID</label>
+        <label for='input-album-id' class="form-label">Album Name</label>
         <select name='input-album-id' id="input-album-id">
             <option value=''>Select an Album</option>
             {{#each album_info}}

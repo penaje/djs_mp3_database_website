@@ -1,10 +1,5 @@
 <!-- download_items.handlebars -->
 
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/Footer-Basic.css">
-<link rel="stylesheet" href="./css/Navigation-Clean.css">
-<link rel="stylesheet" href="./css/styles.css">
-
 <nav class="navbar navbar-light navbar-expand-md d-xxl-flex justify-content-xxl-center navigation-clean"
         style="background: #222222;">
         <div class="container"><a class="navbar-brand" href="/"
@@ -59,7 +54,7 @@
                     <td>{{this.track_id}}</td>
                     <td>{{this.single}}</td> 
 
-                    <td><button onclick="deleteDownloadItem({{this.order_number}},{{this.track_num}})">Delete</button></td>   
+                    <td><button class="btn btn-primary" style="background: var(--bs-indigo);" onclick="deleteDownloadItem({{this.order_number}},{{this.track_num}})">Delete</button></td>   
                 </tr>
                 {{/each}}
             </tbody>
@@ -67,8 +62,15 @@
     </div>
     <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Add Download Item Information</h2>
     <form id='add-download-items-form' method="post" action='download_items/add-download-items-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
+
         <label for='input-order-number' class="form-label">Order Number</label>
-        <input class="form-control" type="number" name='input-order-number' id="input-order-number" required="">
+        <select name='input-order-number' id="input-order-number">
+            <option value=''>Select an Order:</option>
+            {{#each orders_info}}
+            <option value="{{this.order_number}}">{{this.order_number}}</option>
+            {{/each}}
+        </select>
+        <br>
 
         <label for='input-track-id' class="form-label">Track ID</label>
         <select name='input-track-id' id="input-track-id">
@@ -79,8 +81,13 @@
         </select>
         <br>
 
-        <label for='input-single'class="form-label">Single</label>
-        <input class="form-control" type="number" name='input-single' id="input-single">
+        <label for='input-single' class="form-label">Single?</label>
+        <select name='input-single' id="input-single">
+            <option value=''>Single?</option>
+            <option value=1>Yes</option>
+            <option value=0>No</option>
+        </select>
+        <br>
 
         <input  text='Add New Download Item'type='submit'>
 

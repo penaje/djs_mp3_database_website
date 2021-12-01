@@ -33,7 +33,6 @@ router.post('/add-customer-form', function(req, res){
              VALUES ('${data['input-fname']}', '${data['input-lname']}','${data['input-pnumber']}', '${data['input-street']}',
               ${customer_apt}, '${data['input-city']}', '${data['input-state']}', '${data['input-zip']}', '${data['input-email']}',
               '${data['input-card']}', '${data['input-cardexp']}')`;
-              console.log(data)
     db.pool.query(query1, function(error, rows, fields){
     
         // Check to see if there was an error
@@ -44,8 +43,8 @@ router.post('/add-customer-form', function(req, res){
             res.sendStatus(400);
         }
     
-        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
-        // presents it on the screen
+        // If there was no error, we redirect back to our root route
+
         else
         {
             res.redirect('/customers');

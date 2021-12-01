@@ -67,7 +67,7 @@ router.post('/add-tracks-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
 
-    // Capture NULL values
+    // Capture NULL values for album_id
     let album_id = data['input-album-id'];
     console.log('data test')
     console.log(data['input-album-id'])
@@ -79,9 +79,21 @@ router.post('/add-tracks-form', function(req, res){
         album_id = 'NULL'
     }
 
+    // Capture NULL values for artist_id
+    let artist_id = data['input-artist-id'];
+    console.log('data test')
+    console.log(data['input-artist-id'])
+
+    if (artist_id === undefined){
+        artist_id = 'NULL'
+    }
+    if (artist_id === ''){
+        artist_id = 'NULL'
+    }
+
     
     // Create the query and run it on the database
-    query1 = `INSERT INTO tracks (title, artist_id, album_id, ind_price, album_price) VALUES ('${data['input-title']}', '${data['input-artist-id']}',${album_id},'${data['input-ind-price']}', '${data['input-album-price']}')`;
+    query1 = `INSERT INTO tracks (title, artist_id, album_id, ind_price, album_price) VALUES ('${data['input-title']}', ${artist_id}, ${album_id},'${data['input-ind-price']}', '${data['input-album-price']}')`;
     db.pool.query(query1, function(error, rows, fields){
     
         // Check to see if there was an error
@@ -92,8 +104,7 @@ router.post('/add-tracks-form', function(req, res){
             res.sendStatus(400);
         }
     
-        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
-        // presents it on the screen
+        // If there was no error, we redirect back to our root route, 
         else
         {
             res.redirect('/tracks');

@@ -27,7 +27,7 @@ router.post('/add-albums-form', function(req, res){
         genre = 'NULL'
     }
     if (genre === '') {
-        genre = "NULL"
+        genre = 'NULL'
     }
 
     let release_date = (data['input-release-date']);
@@ -35,14 +35,14 @@ router.post('/add-albums-form', function(req, res){
         release_date = 'NULL'
     }
     if (release_date === '') {
-        release_date = "NULL"
+        release_date = 'NULL'
     }
 
 
     
     // Create the query and run it on the database
     query1 = `INSERT INTO albums (album_title, genre, release_date) 
-             VALUES ("${data["input-album-title"]}", "${genre}", "${release_date}")`;
+             VALUES ("${data["input-album-title"]}", ${genre}, ${release_date})`;
 
               console.log(data)
               console.log(query1)
