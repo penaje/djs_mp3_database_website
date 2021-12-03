@@ -21,11 +21,17 @@ router.post('/add-customer-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
     
-        // Capture NULL values
-    let customer_apt = parseInt(data['input-apt']);
-    if (isNaN(customer_apt)){
+    let customer_apt = (data['input-apt']); 
+
+    if (customer_apt === undefined){
         customer_apt = 'NULL'
     }
+    if (customer_apt === '') {
+        customer_apt = 'NULL'
+    }
+    else
+        //append quotations marks to denote string 
+        customer_apt = "'" + data['input-apt'] + "'"
     
     // Create the query and run it on the database
     query1 = `INSERT INTO customers (customer_first_name, customer_last_name, customer_phone, customer_street,

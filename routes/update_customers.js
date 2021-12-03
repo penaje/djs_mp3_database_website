@@ -43,11 +43,19 @@ router.put('/:id', function(req, res){
     let data = req.body;
 
     // handle possible NULL insert for customer apartment
-    let customer_apt = parseInt(data['input-apt']);
-    if (isNaN(customer_apt)){
+    let customer_apt = data['input-apt']; 
+
+    if (customer_apt === undefined){
         customer_apt = 'NULL'
     }
-
+    if (customer_apt === '') {
+        customer_apt = 'NULL'
+    }
+    else
+    {
+        //append quotations marks to denote string 
+        customer_apt = "'" + data['input-apt'] + "'"
+        }
     
     //new query
     let query = `UPDATE customers SET 

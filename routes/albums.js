@@ -29,6 +29,9 @@ router.post('/add-albums-form', function(req, res){
     if (genre === '') {
         genre = 'NULL'
     }
+    else
+        //append quotations marks to denote string 
+        genre = "'" + data['input-genre'] + "'"
 
     let release_date = (data['input-release-date']);
     if (release_date === undefined) {
@@ -37,6 +40,9 @@ router.post('/add-albums-form', function(req, res){
     if (release_date === '') {
         release_date = 'NULL'
     }
+    else
+    //append quotations marks to denote string 
+    release_date = "'" + data['input-release-date'] + "'"
 
 
     
