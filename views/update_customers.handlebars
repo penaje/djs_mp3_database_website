@@ -36,7 +36,7 @@
     </nav>
     
     <h2 style="margin: 10px;margin-top: 10px;padding: 5px;">Update Customer Information</h2>
-    <form id='update-customer-form' method="post" action='/update_customers' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
+    <form id='update-customer-form' method="post" action='/update_customers' onsubmit="updateCustomer({{customer.customer_id}})" class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
         <label for='input-fname' class="form-label">First Name</label>
         <input class="form-control" type="text" name='input-fname' id="input-fname" required="" value ="{{customer.customer_first_name}}">
 
@@ -70,9 +70,9 @@
         <label for='input-card-exp'class="form-label">Credit Card Exp</label>
         <input class="form-control" type="text" name='input-cardexp' id="input-card-exp" minlength="4" maxlength="4" required="" value="{{customer.credit_card_exp}}">
 
-        </form>
-        <button class="btn btn-primary" style="background: var(--bs-indigo);" onclick="updateCustomer({{customer.customer_id}})">Update</button>
+        <input type='submit'>
 
+        </form>
 
     <footer class="footer-basic">
         <p class="text-center copyright">DJ's MP3's © 2021</p>
