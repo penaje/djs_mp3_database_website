@@ -64,7 +64,7 @@
     <form id='add-download-items-form' method="post" action='download_items/add-download-items-form' class="text-start" style="font-weight: bold;margin: 20px;padding: 10px;">
 
         <label for='input-order-number' class="form-label">Order Number</label>
-        <select name='input-order-number' id="input-order-number">
+        <select name='input-order-number' id="input-order-number" required=''>
             <option value=''>Select an Order:</option>
             {{#each orders_info}}
             <option value="{{this.order_number}}">{{this.order_number}}</option>
@@ -73,7 +73,7 @@
         <br>
 
         <label for='input-track-id' class="form-label">Track ID</label>
-        <select name='input-track-id' id="input-track-id">
+        <select name='input-track-id' id="input-track-id" required=''>
             <option value=''>Select a Track</option>
             {{#each tracks_info}}
             <option value="{{this.track_id}}">{{this.title}}</option>
@@ -82,7 +82,7 @@
         <br>
 
         <label for='input-single' class="form-label">Single?</label>
-        <select name='input-single' id="input-single">
+        <select name='input-single' id="input-single" required=''>
             <option value=''>Single?</option>
             <option value=1>Yes</option>
             <option value=0>No</option>
